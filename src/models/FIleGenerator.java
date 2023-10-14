@@ -8,12 +8,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class FIleGenerator {
-    public void saveFile(ArrayList<Addresses> addresses) throws IOException {
+    private int index = 0;
+
+    public void saveFile(ArrayList<AddressesCep> addresses) throws IOException {
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
                 .create();
 
-        FileWriter writer = new FileWriter("addressList.json", true);
+        FileWriter writer = new FileWriter("addressList.json", false);
         writer.write(gson.toJson(addresses));
         writer.close();
     }

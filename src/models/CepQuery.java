@@ -1,8 +1,6 @@
 package models;
 
-import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 import java.net.URI;
@@ -12,24 +10,41 @@ import java.net.http.HttpResponse;
 
 public class CepQuery {
 
-    public Addresses searchCep(String userCep) {
+    public AddressesCep searchCep(String userCep) {
+        userCep = userCep.replaceAll("-", "");
+        userCep = userCep.replaceAll(" ", "");
+
+        String linkUrl = "https://viacep.com.br/ws/" + userCep + "/json/";
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(linkUrl))
+                .build();
         try {
-            String linkUrl = "https://viacep.com.br/ws/" + userCep + "/json/";
-            HttpClient client = HttpClient.newHttpClient();
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create(linkUrl))
-                    .build();
             HttpResponse<String> response = client
                     .send(request, HttpResponse.BodyHandlers.ofString());
 
-            Gson gson = new GsonBuilder()
-                    .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
-                    .setPrettyPrinting()
-                    .create();
-
-            return gson.fromJson(response.body(), Addresses.class);
+            return new Gson().fromJson(response.body(), AddressesCep.class);
 
         } catch (IOException | InterruptedException e) {
+            throw new RuntimeException("Não consegui obter o endereço a partir desse CEP.");
+        }
+    }
+
+    public AddressesCep searchAddresses(String uf, String city, String street) {
+        city = city.replaceAll(" ", "+");
+        street = street.replaceAll(" ", "+");
+
+        String linkUrl = "https://viacep.com.br/ws/" + uf + "/" + city + "/" + street + "/json/";
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(linkUrl))
+                .build();
+        try {
+            HttpResponse<String> response = client
+                    .send(request, HttpResponse.BodyHandlers.ofString());
+            return new Gson().fromJson(response.body(), AddressesCep.class);
+
+        } catch (IOException | InterruptedException | IllegalArgumentException e) {
             throw new RuntimeException("Não consegui obter o endereço a partir desse CEP.");
         }
     }
