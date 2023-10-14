@@ -1,58 +1,35 @@
 package main;
 
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import models.Addresses;
+import models.CepQuery;
+import models.FIleGenerator;
 
 import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         String userResponse;
         Scanner scan = new Scanner(System.in);
+        CepQuery cepQuery = new CepQuery();
+        FIleGenerator fIleGenerator = new FIleGenerator();
+        Addresses address = new Addresses();
 
         do {
             System.out.println("Enter your CEP/zip code:");
-            String userCEP = scan.nextLine();
-            userCEP = userCEP.replaceAll("-", "");
-            userCEP = userCEP.replaceAll(" ", "");
+            String userCep = scan.nextLine();
+            userCep = userCep.replaceAll("-", "");
+            userCep = userCep.replaceAll(" ", "");
+            System.out.println(cepQuery.searchCep(userCep));
 
-            try {
-                String linkUrl = "https://viacep.com.br/ws/" + userCEP + "/json/";
-                HttpClient client = HttpClient.newHttpClient();
-                HttpRequest request = HttpRequest.newBuilder()
-                        .uri(URI.create(linkUrl))
-                        .build();
-                HttpResponse<String> response = client
-                        .send(request, HttpResponse.BodyHandlers.ofString());
+            address.addAddresses(cepQuery.searchCep(userCep));
 
-//                System.out.println(response.body());
-
-                Gson gson = new GsonBuilder()
-                        .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
-                        .create();
-
-                Addresses addresses = gson.fromJson(response.body(), Addresses.class);
-
-                System.out.println(addresses);
-
-
-            } catch (IOException | InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-
-            System.out.println("Do you want to continue? (Yes/No)");
+            System.out.println("\nDo you want to continue? (Yes/No)");
             userResponse = scan.nextLine();
 
         } while (userResponse.toLowerCase().charAt(0) != 'n');
 
-
+        fIleGenerator.saveFile(address.getAddresses());
     }
 }

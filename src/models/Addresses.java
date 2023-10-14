@@ -2,8 +2,12 @@ package models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+
 public class Addresses {
 
+    @SerializedName("cep")
+    private String cep;
     @SerializedName("uf")
     private String state;
     @SerializedName("localidade")
@@ -12,33 +16,19 @@ public class Addresses {
     private String neighborhood;
     @SerializedName("logradouro")
     private String street;
+    private ArrayList<Addresses> addresses = new ArrayList<>();
 
-    public Addresses(String state, String city, String neighborhood, String street) {
-        this.state = state;
-        this.city = city;
-        this.neighborhood = neighborhood;
-        this.street = street;
+    public void addAddresses(Addresses address) {
+        addresses.add(address);
     }
 
-    public String getState() {
-        return state;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public String getNeighborhood() {
-        return neighborhood;
-    }
-
-    public String getStreet() {
-        return street;
+    public ArrayList<Addresses> getAddresses() {
+        return addresses;
     }
 
     @Override
     public String toString() {
-        return "Addresses: " + "\n" +
+        return "CEP: " + cep + "\n" +
                 "City: " + city + ", " + "\n" +
                 "State: " + state + ", " + "\n" +
                 "Neighborhood: " + neighborhood + ", " + "\n" +
