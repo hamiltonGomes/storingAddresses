@@ -12,14 +12,20 @@ This is a Java project that allows you to perform searches by CEP, retrieve addr
 
 - **JSON Storage:** The results of the queries are stored in a JSON file for future reference.
 
+## Future Features
+
+- **Database Storage:** Instead of storing addresses in a JSON file, I'm planning to integrate a database, such as SQLite or MySQL, to provide more robust address management and search capabilities.
+
+- **Geolocation:** I'm exploring the addition of geolocation features to display addresses on maps and calculate distances between addresses for a richer user experience.
+
 ## How to Use
 
 1. Clone the repository to your local environment:
-   git clone https://github.com/hamiltonGomes/viaCepJavaProject.git
+-  git clone https://github.com/hamiltonGomes/viaCepJavaProject.git
 2. Compile the project:
-   javac -d out -cp .:libs/gson-2.10.1.jar src/main/*.java
+-  javac -d out -cp .:libs/gson-2.10.1.jar src/main/*.java
 3. Run the program:
-   java -cp out:libs/gson-2.10.1.jar main.Main
+-  java -cp out:libs/gson-2.10.1.jar main.Main
 4. Follow the instructions in the console to perform ZIP code and address searches, list addresses, and store them in a JSON file.
 
 ## Requirements
@@ -29,5 +35,5 @@ This is a Java project that allows you to perform searches by CEP, retrieve addr
 ## License
 This project is distributed under the MIT License. See the LICENSE file for more details.
 
-Author
-Hamilton Gomes
+## Author
+[Hamilton Gomes](github.com/hamiltonGomes)
