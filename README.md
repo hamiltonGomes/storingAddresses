@@ -32,8 +32,5 @@ This is a Java project that allows you to perform searches by CEP, retrieve addr
 - Java Development Kit (JDK) 8 or higher
 - GSON library (libs/gson-2.10.1.jar)
 
-## License
-This project is distributed under the MIT License. See the LICENSE file for more details.
-
 ## Author
 [Hamilton Gomes](https://github.com/hamiltonGomes)
