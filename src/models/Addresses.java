@@ -8,7 +8,7 @@ public record Addresses(
         String uf) {
     @Override
     public String toString() {
-        return "CEP: " + cep + "\n" +
+        return "\nCEP: " + cep + "\n" +
                 "Street: " + logradouro + "\n" +
                 "Neighborhood: " + bairro + "\n" +
                 "City: " + localidade + "\n" +

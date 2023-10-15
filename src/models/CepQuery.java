@@ -53,7 +53,7 @@ public class CepQuery {
             if (!addressesList6.isEmpty()) {
                 return addressesList6.get(0);
             } else {
-                throw new RuntimeException("A lista de endereços está vazia ou o JSON não é um array válido.");
+                throw new RuntimeException("Desculpe, não encontramos nenhum endereço para os parâmetros especificados. Verifique se os dados estão corretos e tente novamente.");
             }
 
         } catch (IOException | InterruptedException | IllegalArgumentException e) {
