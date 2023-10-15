@@ -1,6 +1,4 @@
-# Via CEP Java Project
-
-This is a Java project that allows you to perform searches by CEP, retrieve address information, list addresses, and store the results in a JSON document. It uses the Via CEP API to fetch address information in Brazil.
+# Via CEP Project
 
 ## Features
 
