@@ -36,4 +36,4 @@ This is a Java project that allows you to perform searches by CEP, retrieve addr
 This project is distributed under the MIT License. See the LICENSE file for more details.
 
 ## Author
-[Hamilton Gomes](github.com/hamiltonGomes)
+[Hamilton Gomes](https://github.com/hamiltonGomes)
