@@ -19,11 +19,11 @@
 ## How to Use
 
 1. Clone the repository to your local environment:
--  git clone https://github.com/hamiltonGomes/viaCepJavaProject.git
+`git clone https://github.com/hamiltonGomes/viaCepJavaProject.git`
 2. Compile the project:
--  javac -d out -cp .:libs/gson-2.10.1.jar src/main/*.java
+`javac -d out -cp .:libs/gson-2.10.1.jar src/main/*.java`
 3. Run the program:
--  java -cp out:libs/gson-2.10.1.jar main.Main
+`java -cp out:libs/gson-2.10.1.jar main.Main`
 4. Follow the instructions in the console to perform ZIP code and address searches, list addresses, and store them in a JSON file.
 
 ## Requirements
