@@ -10,12 +10,6 @@
 
 - **JSON Storage:** The results of the queries are stored in a JSON file for future reference.
 
-## Future Features
-
-- **Database Storage:** Instead of storing addresses in a JSON file, I'm planning to integrate a database, such as SQLite or MySQL, to provide more robust address management and search capabilities.
-
-- **Geolocation:** I'm exploring the addition of geolocation features to display addresses on maps and calculate distances between addresses for a richer user experience.
-
 ## How to Use
 
 1. Clone the repository to your local environment:
@@ -29,6 +23,3 @@
 ## Requirements
 - Java Development Kit (JDK) 8 or higher
 - GSON library (libs/gson-2.10.1.jar)
-
-## Author
-[Hamilton Gomes](https://github.com/hamiltonGomes)
